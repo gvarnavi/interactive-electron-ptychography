@@ -1,0 +1,99 @@
+---
+id: phase-retrieval
+sidebar_position: 4
+title: Open-Source Phase Retrieval
+hide_table_of_contents: true
+hide_title: true
+---
+
+import Tabs from '@theme/Tabs';
+import TabItem from '@theme/TabItem';
+
+import Py4DSTEMImage from '@site/static/img/py4dstem-phase-retrieval.svg';
+
+import JupyterCell from '@site/src/components/JupyterCell';
+
+## Open-Source Phase Retrieval
+
+<Py4DSTEMImage width="100%" height="100%"/>
+
+- Suite of phase retrieval algorithms, including iterative DPC, ptychograpy, and parallax (tc-BF)
+- User-friendly, object-oriented code
+  - Check out our [tutorial notebooks](https://github.com/py4dstem/py4DSTEM_tutorials/tree/main/notebooks) and recent preprint [arXiv:2309.05250](https://arxiv.org/abs/2309.05250)!
+
+<Tabs lazy>
+
+  <TabItem value="data" label="Load Dataset">
+
+<JupyterCell
+  source= {`# import lines
+# !pip install "git+https://github.com/py4dstem/py4DSTEM.git@phase_contrast_refactor"
+
+# gdrive_id ="1C3tXV5BXz0JXbmyu3wTu3NutuIYYsN8A"
+# file_data = 'ptycho_MoS2_bin2.h5'
+
+# py4DSTEM.io.gdrive_download(
+#     id_ = f"https://drive.google.com/uc?id={gdrive_id}",
+#     filename = file_data,
+# )
+
+import numpy as np
+import py4DSTEM
+
+dataset = py4DSTEM.read('py4dstem/ptycho_MoS2_bin2.h5')
+dataset.get_dp_mean();
+
+# plot mean diffraction pattern
+py4DSTEM.show(
+    dataset.tree('dp_mean'),
+    ticks=False,
+    cmap='turbo',
+    power=0.125,
+)`}
+  serverHttpUrl='https://oss.datalayer.tech/api/jupyter'
+  serverWsUrl='wss://oss.datalayer.tech/api/jupyter'
+  token='60c1661cc408f978c309d04157af55c9588ff9557c9380e4fb50785750703da6'
+ />
+
+  </TabItem>
+
+  <TabItem value="preprocess" label="Preprocessing">
+
+<JupyterCell
+  source= {`# initialize and preprocess
+ptycho = py4DSTEM.process.phase.SingleslicePtychography(
+    datacube=dataset,
+    verbose=False,
+    energy = 80e3,
+    semiangle_cutoff = 21.4,
+    object_type='potential',
+    object_padding_px = (0,0),
+).preprocess(
+    fit_function="constant",
+)`}
+  serverHttpUrl='https://oss.datalayer.tech/api/jupyter'
+  serverWsUrl='wss://oss.datalayer.tech/api/jupyter'
+  token='60c1661cc408f978c309d04157af55c9588ff9557c9380e4fb50785750703da6'
+ />
+
+  </TabItem>
+
+  <TabItem value="ptycho-reconstruct" label="Reconstruction">
+
+<JupyterCell
+  source= {`# reconstruct
+ptycho = ptycho.reconstruct(
+    reset = True,
+    max_iter = 2,
+    gaussian_filter_sigma = 0.3,
+).visualize(
+)`}
+  serverHttpUrl='https://oss.datalayer.tech/api/jupyter'
+  serverWsUrl='wss://oss.datalayer.tech/api/jupyter'
+  token='60c1661cc408f978c309d04157af55c9588ff9557c9380e4fb50785750703da6'
+ />
+
+  </TabItem>
+
+</Tabs>
+
