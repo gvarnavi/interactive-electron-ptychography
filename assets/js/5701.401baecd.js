@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkinteractive_ptycho=self.webpackChunkinteractive_ptycho||[]).push([[5701],{85701:(e,t,c)=>{c.r(t)}}]);
