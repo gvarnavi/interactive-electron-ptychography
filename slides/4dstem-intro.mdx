@@ -10,5 +10,15 @@ import Multislice4DstemComponent from '@site/src/components/Multislice4DstemComp
 
 ## 4D Scanning Transmission Electron Microscopy
 
+- Each diffraction pattern &rarr; non-convex set
+  - Phase problem: reconstruct probe $\hat{\mathcal{P}}$ and object $\hat{\mathcal{O}}$ from set of phase-less diffraction intensities $\{I\}$
+
+$$
+\begin{aligned}
+  \psi_j(\boldsymbol{r}) &= \hat{\mathcal{P}}(\boldsymbol{r}) \times \hat{\mathcal{O}}(\boldsymbol{r}-\boldsymbol{R}_j) \\
+  I_j(\boldsymbol{k}) &= \left| \mathcal{F}\left[\psi_j(\boldsymbol{r})\right]\right|^2
+\end{aligned}
+$$
+
 <Multislice4DstemComponent />
 

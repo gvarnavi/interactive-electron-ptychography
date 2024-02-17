@@ -26,18 +26,7 @@ import JupyterCell from '@site/src/components/JupyterCell';
   <TabItem value="data" label="Load Dataset">
 
 <JupyterCell
-  source= {`# import lines
-# !pip install "git+https://github.com/py4dstem/py4DSTEM.git@phase_contrast_refactor"
-
-# gdrive_id ="1C3tXV5BXz0JXbmyu3wTu3NutuIYYsN8A"
-# file_data = 'ptycho_MoS2_bin2.h5'
-
-# py4DSTEM.io.gdrive_download(
-#     id_ = f"https://drive.google.com/uc?id={gdrive_id}",
-#     filename = file_data,
-# )
-
-import numpy as np
+  source= {`import numpy as np
 import py4DSTEM
 
 dataset = py4DSTEM.read('py4dstem/ptycho_MoS2_bin2.h5')
@@ -70,6 +59,8 @@ ptycho = py4DSTEM.process.phase.SingleslicePtychography(
     object_padding_px = (0,0),
 ).preprocess(
     fit_function="constant",
+    plot_center_of_mass=False,
+    plot_rotation = False,
 )`}
   serverHttpUrl='https://oss.datalayer.tech/api/jupyter'
   serverWsUrl='wss://oss.datalayer.tech/api/jupyter'
