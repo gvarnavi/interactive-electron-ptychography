@@ -29,7 +29,13 @@ import JupyterCell from '@site/src/components/JupyterCell';
   source= {`import numpy as np
 import py4DSTEM
 
-dataset = py4DSTEM.read('py4dstem/ptycho_MoS2_bin2.h5')
+# gdrive_id ="1C3tXV5BXz0JXbmyu3wTu3NutuIYYsN8A"
+# py4DSTEM.io.gdrive_download(
+#     id_ = f"https://drive.google.com/uc?id={gdrive_id}",
+#     filename = 'ptycho_MoS2_bin2.h5',
+# )
+
+dataset = py4DSTEM.read('ptycho_MoS2_bin2.h5')
 dataset.get_dp_mean();
 
 # plot mean diffraction pattern
@@ -75,7 +81,7 @@ ptycho = py4DSTEM.process.phase.SingleslicePtychography(
   source= {`# reconstruct
 ptycho = ptycho.reconstruct(
     reset = True,
-    max_iter = 2,
+    num_iter = 2,
     gaussian_filter_sigma = 0.3,
 ).visualize(
 )`}
