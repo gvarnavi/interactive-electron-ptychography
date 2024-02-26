@@ -26,8 +26,7 @@ import JupyterCell from '@site/src/components/JupyterCell';
   <TabItem value="data" label="Load Dataset">
 
 <JupyterCell
-  source= {`import numpy as np
-import py4DSTEM
+  source= {`import py4DSTEM
 
 # gdrive_id ="1C3tXV5BXz0JXbmyu3wTu3NutuIYYsN8A"
 # py4DSTEM.io.gdrive_download(
@@ -64,7 +63,6 @@ ptycho = py4DSTEM.process.phase.SingleslicePtychography(
     object_type='potential',
     object_padding_px = (0,0),
 ).preprocess(
-    fit_function="constant",
     plot_center_of_mass=False,
     plot_rotation = False,
 )`}
