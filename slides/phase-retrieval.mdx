@@ -44,8 +44,8 @@ py4DSTEM.show(
     cmap='turbo',
     power=0.125,
 )`}
-  serverHttpUrl='https://oss.datalayer.tech/api/jupyter'
-  serverWsUrl='wss://oss.datalayer.tech/api/jupyter'
+  serverHttpUrl='http://localhost:8686/api/jupyter'
+  serverWsUrl='ws://localhost:8686/api/jupyter'
   token='60c1661cc408f978c309d04157af55c9588ff9557c9380e4fb50785750703da6'
  />
 
@@ -66,8 +66,8 @@ ptycho = py4DSTEM.process.phase.SingleslicePtychography(
     plot_center_of_mass=False,
     plot_rotation = False,
 )`}
-  serverHttpUrl='https://oss.datalayer.tech/api/jupyter'
-  serverWsUrl='wss://oss.datalayer.tech/api/jupyter'
+  serverHttpUrl='http://localhost:8686/api/jupyter'
+  serverWsUrl='ws://localhost:8686/api/jupyter'
   token='60c1661cc408f978c309d04157af55c9588ff9557c9380e4fb50785750703da6'
  />
 
@@ -83,8 +83,8 @@ ptycho = ptycho.reconstruct(
     gaussian_filter_sigma = 0.3,
 ).visualize(
 )`}
-  serverHttpUrl='https://oss.datalayer.tech/api/jupyter'
-  serverWsUrl='wss://oss.datalayer.tech/api/jupyter'
+  serverHttpUrl='http://localhost:8686/api/jupyter'
+  serverWsUrl='ws://localhost:8686/api/jupyter'
   token='60c1661cc408f978c309d04157af55c9588ff9557c9380e4fb50785750703da6'
  />
 
